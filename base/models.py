@@ -1,6 +1,7 @@
 from dateutil.relativedelta import relativedelta
 from django.db import models
-from django_countries.fields import CountryField
+from django.utils import timezone
+# from django_countries.fields import CountryField
 
 
 class Customer(models.Model):
@@ -8,7 +9,7 @@ class Customer(models.Model):
     customer_phone = models.CharField(max_length=20)
     customer_email = models.EmailField()
     date_of_birth = models.DateField()
-    nationality = CountryField()
+    nationality = models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
@@ -16,6 +17,11 @@ class Customer(models.Model):
 class Business_Category(models.Model):
     title = models.CharField(max_length=255)
 
+    class Meta:
+        verbose_name_plural = "Business Categories"
+
+    def __str__(self):
+        return self.title
 
 class Location(models.Model):
     county = models.CharField(max_length=255)
@@ -23,6 +29,10 @@ class Location(models.Model):
     ward = models.CharField(max_length=255)
     building_name = models.CharField(max_length=255, blank=True)
     floor = models.IntegerField(blank=True)
+
+    def __str__(self):
+        return self.county
+    
 
 class Business(models.Model):
     category = models.ForeignKey(Business_Category, on_delete=models.CASCADE)
@@ -32,9 +42,21 @@ class Business(models.Model):
     registration_date = models.DateField()
     age = models.PositiveIntegerField(editable=False)
 
+    
+    class Meta:
+        verbose_name_plural = "Businesses"
+
     def __str__(self):
         return self.name
+    
+    def calculate_age(self):
+        return (timezone.now().date() - self.registration_date).days // 365.25
+    
+    @property
+    def calculated_age(self):
+        return self.calculate_age()
 
     def save(self, *args, **kwargs):
-        self.age = (models.DateField.today() - self.registration_date).days // 365.25
+        self.age = self.calculate_age()
         super().save(*args, **kwargs)
+

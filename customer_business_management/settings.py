@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
     # Third Party libraries
     'rest_framework',
-    'django_countries ',
+    # 'django_countries',
 
     # Custom apps
     'base',

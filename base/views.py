@@ -1,3 +1,5 @@
 from django.shortcuts import render
+from .models import Customer, Business, Business_Category, Location
 
-# Create your views here.
+def Customerlist(request):
+    pass
