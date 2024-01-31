@@ -33,13 +33,13 @@ The Customer Business Management API is a Django project that will allow you to 
 
 2.  Navigate to the project directory:
     
-    bashCopy code
+    
     
     `cd customer-business-management`
     
 3.  Create a virtual environment (optional but recommended):
     
-    bashCopy code
+    
     
     `python -m venv venv`
     
@@ -47,31 +47,31 @@ The Customer Business Management API is a Django project that will allow you to 
     
     *   On Windows:
         
-        bashCopy code
+        
         
         `venv\Scripts\activate`
         
     *   On macOS/Linux:
         
-        bashCopy code
+        
         
         `source venv/bin/activate`
         
 5.  Install dependencies:
     
-    bashCopy code
+    
     
     `pip install -r requirements.txt`
     
 6.  Apply database migrations:
     
-    bashCopy code
+    
     
     `python manage.py migrate`
     
 7.  Run the development server:
     
-    bashCopy code
+    
     
     `python manage.py runserver`
     
@@ -87,7 +87,7 @@ The Customer Business Management API is a Django project that will allow you to 
 *   Business Detail: `/business-detail/<int:pk>/` (GET, PUT, DELETE)
 
 ## Run Tests
-bashCopy code
+
     
     `python manage.py test`
 
@@ -99,3 +99,8 @@ bashCopy code
 2.  Use the provided Django Rest Framework frontend by visiting http://localhost:8000/ in your web browser.
     
 3.  Integrate the API into your own frontend application by making HTTP requests to the defined endpoints.
+
+
+## Database Design Diagram
+
+![Database Design Diagram](Database Design Test.drawio.png)
