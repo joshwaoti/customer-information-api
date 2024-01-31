@@ -101,7 +101,8 @@ You can use this example format while creating and updating businesses
     "building_name": "ABC Plaza",
     "floor": 3
   }
-}```
+}
+```
 
 **Admin Panel**
 You can use the admin panel to access and manipulate the APIs data as well
@@ -122,4 +123,4 @@ password: adminadminuser
 ## Database Design Diagram
 
 ![Database Design Diagram](./database_design.png)
-````
+
