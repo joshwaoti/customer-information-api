@@ -75,7 +75,7 @@ The Customer Business Management API is a Django project that will allow you to 
 
 ## Creating and Updating Home
 
-````{
+```{
         "name": "Customer Name",
         "customer_phone": "0712345678",
         "customer_email": "example@protonmail.com",
