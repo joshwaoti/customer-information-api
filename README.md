@@ -73,6 +73,32 @@ The Customer Business Management API is a Django project that will allow you to 
 - Business List: `http://127.0.0.1:8000/api/businesses/` (GET, POST)
 - Business Detail: `http://127.0.0.1:8000/api/business-detail/<int:pk>/` (GET, PUT, DELETE)
 
+## Creating and Updating Home
+{
+        "name": "Customer Name",
+        "customer_phone": "0712345678",
+        "customer_email": "example@protonmail.com",
+        "date_of_birth": "2001-1-1",
+        "nationality": "Kenyan",
+        "customer_details_url": "http://127.0.0.1:8000/api/customer-detail/3/"
+    }
+
+## Creating and Updating Business
+You can use this example format while creating and updating businesses
+`{
+  "name": "My New Business",
+  "category": 1,  # Replace with the ID of the desired business category
+  "customer": null,  # Set to null if there is no associated customer
+  "registration_date": "2023-03-08",
+  "location": {
+    "county": "Nairobi",
+    "sub_county": "Westlands",
+    "ward": "Kitisuru",
+    "building_name": "ABC Plaza",
+    "floor": 3
+  }
+}`
+
 **Admin Panel**
 You can use the admin panel to access and manipulate the APIs data as well
 http://127.0.0.1:8000/admin
