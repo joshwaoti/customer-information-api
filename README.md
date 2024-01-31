@@ -103,4 +103,4 @@ The Customer Business Management API is a Django project that will allow you to 
 
 ## Database Design Diagram
 
-![Database Design Diagram](database_design.png)
+![Database Design Diagram](./database_design.png)
