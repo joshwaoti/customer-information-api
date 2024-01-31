@@ -1,0 +1,101 @@
+# Customer Business Management API
+
+The Customer Business Management API is a Django project that will allow you to manage customer and business information efficiently.
+
+## Features
+
+- **Customer Management:** Add, update, and delete customer details including name, contact information, date of birth, and nationality.
+
+- **Business Management:** Manage business information, including business name, registration date, and associated customer details.
+
+- **Location Management:** Track business locations by specifying county, sub-county, ward, building name, and floor.
+
+## Technologies Used
+
+- Django: A high-level Python web framework for building web applications.
+
+- Django Rest Framework: A powerful and flexible toolkit for building Web APIs.
+
+## Setup Instructions
+
+### Prerequisites
+
+- Python 3.x
+- pip
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/customer-business-management.git
+
+
+2.  Navigate to the project directory:
+    
+    bashCopy code
+    
+    `cd customer-business-management`
+    
+3.  Create a virtual environment (optional but recommended):
+    
+    bashCopy code
+    
+    `python -m venv venv`
+    
+4.  Activate the virtual environment:
+    
+    *   On Windows:
+        
+        bashCopy code
+        
+        `venv\Scripts\activate`
+        
+    *   On macOS/Linux:
+        
+        bashCopy code
+        
+        `source venv/bin/activate`
+        
+5.  Install dependencies:
+    
+    bashCopy code
+    
+    `pip install -r requirements.txt`
+    
+6.  Apply database migrations:
+    
+    bashCopy code
+    
+    `python manage.py migrate`
+    
+7.  Run the development server:
+    
+    bashCopy code
+    
+    `python manage.py runserver`
+    
+    The application will be accessible at http://localhost:8000/.
+    
+
+## API Endpoints
+-------------
+
+*   Customer List: `/customers/` (GET, POST)
+*   Customer Detail: `/customer-detail/<int:pk>/` (GET, PUT, DELETE)
+*   Business List: `/businesses/` (GET, POST)
+*   Business Detail: `/business-detail/<int:pk>/` (GET, PUT, DELETE)
+
+## Run Tests
+bashCopy code
+    
+    `python manage.py test`
+
+**Usage**
+-----
+
+1.  Access the provided API endpoints using tools like `curl`, `httpie`, or your preferred API testing tool.
+    
+2.  Use the provided Django Rest Framework frontend by visiting http://localhost:8000/ in your web browser.
+    
+3.  Integrate the API into your own frontend application by making HTTP requests to the defined endpoints.
