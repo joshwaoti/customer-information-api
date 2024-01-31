@@ -75,18 +75,21 @@ The Customer Business Management API is a Django project that will allow you to 
 
 ## Creating and Updating Home
 
-```{
+```json
+{
         "name": "Customer Name",
         "customer_phone": "0712345678",
         "customer_email": "example@protonmail.com",
         "date_of_birth": "2001-1-1",
         "nationality": "Kenyan",
         "customer_details_url": "http://127.0.0.1:8000/api/customer-detail/3/"
-    }```
-
+    
+}
+```
 ## Creating and Updating Business
 You can use this example format while creating and updating businesses
-```{
+```json
+{
   "name": "My New Business",
   "category": 1,  # Replace with the ID of the desired business category
   "customer": null,  # Set to null if there is no associated customer
