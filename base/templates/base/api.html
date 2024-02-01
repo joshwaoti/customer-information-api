@@ -1,0 +1,19 @@
+{% extends "rest_framework/base.html" %}
+
+{% block navbar %}
+    <h2>Customer Infomation management API<h2>
+{% endblock %}
+
+{% block content %}
+<h2>API Documentation</h2>
+
+    <p>
+        This API provides various endpoints for interacting with the system.
+        Please refer to the <a href="https://github.com/joshwaoti/customer-information-api" target="_blank">github repository</a> for more details on each endpoint.
+    </p>
+    <br>
+    <p><a href="http://127.0.0.1:8000/api/customers/" target="_blank"> Customer List (GET, POST)</a></p>
+    <p><a href="http://127.0.0.1:8000/api/categories/" target="_blank">Business Category List: (GET, POST)</a> </p>
+    <p><a href="http://127.0.0.1:8000/api/businesses/" target="_blank">Business List: (GET, POST)</a></p>
+
+{% endblock content %}

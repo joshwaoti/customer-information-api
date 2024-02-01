@@ -8,6 +8,9 @@ from rest_framework.renderers import JSONRenderer
 from .models import Customer, Business, BusinessCategory, Location
 from .serializers import CustomerSerializer, BusinessCategorySerializer, BusinessCategoryDetailSerializer, BusinessSerializer, LocationSerializer
 
+def home(request):
+    return render(request, 'base/api.html')
+
 @api_view(['GET', 'POST'])
 def customer_list(request):
     if request.method == "GET":
