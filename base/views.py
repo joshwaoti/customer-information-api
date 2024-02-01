@@ -3,8 +3,9 @@ from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.renderers import JSONRenderer
 
-from .models import Customer, Business, Business_Category, Location
+from .models import Customer, Business, BusinessCategory, Location
 from .serializers import CustomerSerializer, BusinessCategorySerializer, BusinessSerializer, LocationSerializer
 
 @api_view(['GET', 'POST'])
@@ -83,3 +84,33 @@ def business_details(request, pk):
     elif request.method == 'DELETE':
         business.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET', 'POST'])
+def business_category(request):
+    if request.method == 'GET':
+        categories = BusinessCategory.objects.all()
+        serializer = BusinessCategorySerializer(categories, many=True, context={'request': request})
+        return Response(serializer.data)  # Set the renderer class
+
+    elif request.method == 'POST':
+        serializer = BusinessCategorySerializer(data=request.data, context={'request': request})
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)  # Set the renderer class
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)  # Set the renderer class
+    
+@api_view(['GET', 'PUT', 'DELETE'])
+def business_category_detail(request, pk):
+    category = get_object_or_404(BusinessCategory, pk=pk)
+
+    if request.method == "GET":
+        serializer = BusinessCategorySerializer(category, context={'request': request})
+        return Response(serializer.data)
+    
+    elif request.method == "PUT":
+        serializer = BusinessCategorySerializer(category, data=request.data, context={'request': request})
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

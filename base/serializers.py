@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Customer, Business, Business_Category, Location
+from .models import Customer, Business, BusinessCategory, Location
 from django.utils import timezone
 
 
@@ -13,10 +13,7 @@ class CustomerSerializer(serializers.ModelSerializer):
         model = Customer
         fields = ['id', 'name', 'customer_phone', 'customer_email', 'date_of_birth', 'nationality', 'customer_details_url']
 
-class BusinessCategorySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Business_Category
-        fields = "__all__"
+
 
 class  LocationSerializer(serializers.ModelSerializer):
     class Meta:
@@ -80,3 +77,20 @@ class BusinessSerializer(serializers.ModelSerializer):
         business_instance.save()
 
         return business_instance
+    
+
+class BusinessCategorySerializer(serializers.ModelSerializer):
+    businesses = BusinessSerializer(many=True, read_only=True)
+    business_category_url = serializers.HyperlinkedIdentityField(
+        view_name='category-details',
+        lookup_field='pk'
+    )
+    class Meta:
+        model = BusinessCategory
+        fields = ['id', 'title', 'businesses', 'business_category_url']
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        # Include related businesses in the serialized data
+        representation['businesses'] = BusinessSerializer(instance.businesses.all(), many=True, context=self.context).data
+        return representation

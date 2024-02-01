@@ -14,7 +14,7 @@ class Customer(models.Model):
     def __str__(self):
         return self.name
     
-class Business_Category(models.Model):
+class BusinessCategory(models.Model):
     title = models.CharField(max_length=255)
 
     class Meta:
@@ -35,7 +35,7 @@ class Location(models.Model):
     
 
 class Business(models.Model):
-    category = models.ForeignKey(Business_Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(BusinessCategory, related_name="businesses", on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True, blank=True)
     location = models.ForeignKey(Location, on_delete=models.CASCADE, null=True, blank=True)

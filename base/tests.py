@@ -2,7 +2,7 @@ from datetime import date
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
-from .models import Customer, Business_Category, Location, Business
+from .models import Customer, BusinessCategory, Location, Business
 
 class CustomerViewSetTests(APITestCase):
     def setUp(self):
@@ -53,7 +53,7 @@ class CustomerViewSetTests(APITestCase):
 
 class BusinessViewSetTests(APITestCase):
     def setUp(self):
-        self.category = Business_Category.objects.create(title="Technology")
+        self.category = BusinessCategory.objects.create(title="Technology")
         self.customer = Customer.objects.create(name="Business Customer", customer_phone="987654321", customer_email="customer@example.com", date_of_birth="1980-01-01", nationality="US")
         self.location_data = {"county": "Mombasa", "sub_county": "Nyali", "ward": "Bamburi", "building_name": "XYZ Tower", "floor": 5}
         self.location = Location.objects.create(**self.location_data)
