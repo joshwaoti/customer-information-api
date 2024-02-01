@@ -80,6 +80,17 @@ class BusinessSerializer(serializers.ModelSerializer):
     
 
 class BusinessCategorySerializer(serializers.ModelSerializer):
+    business_category_url = serializers.HyperlinkedIdentityField(
+        view_name='category-details',
+        lookup_field='pk'
+    )
+
+    class Meta:
+        model = BusinessCategory
+        fields = ['id', 'title', 'business_category_url']
+
+
+class BusinessCategoryDetailSerializer(serializers.ModelSerializer):
     businesses = BusinessSerializer(many=True, read_only=True)
     business_category_url = serializers.HyperlinkedIdentityField(
         view_name='category-details',

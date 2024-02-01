@@ -6,7 +6,7 @@ from rest_framework import status
 from rest_framework.renderers import JSONRenderer
 
 from .models import Customer, Business, BusinessCategory, Location
-from .serializers import CustomerSerializer, BusinessCategorySerializer, BusinessSerializer, LocationSerializer
+from .serializers import CustomerSerializer, BusinessCategorySerializer, BusinessCategoryDetailSerializer, BusinessSerializer, LocationSerializer
 
 @api_view(['GET', 'POST'])
 def customer_list(request):
@@ -105,11 +105,11 @@ def business_category_detail(request, pk):
     category = get_object_or_404(BusinessCategory, pk=pk)
 
     if request.method == "GET":
-        serializer = BusinessCategorySerializer(category, context={'request': request})
+        serializer = BusinessCategoryDetailSerializer(category, context={'request': request})
         return Response(serializer.data)
     
     elif request.method == "PUT":
-        serializer = BusinessCategorySerializer(category, data=request.data, context={'request': request})
+        serializer = BusinessCategoryDetailSerializer(category, data=request.data, context={'request': request})
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)

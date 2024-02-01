@@ -70,6 +70,8 @@ The Customer Business Management API is a Django project that will allow you to 
 
 - Customer List: `http://127.0.0.1:8000/api/customers/` (GET, POST)
 - Customer Detail: `http://127.0.0.1:8000/api/customer-detail/<int:pk>/` (GET, PUT, DELETE)
+- Business Category List: `http://127.0.0.1:8000/api/categories/` (GET, POST)
+- Business Category Detail: `http://127.0.0.1:8000/api/category-detail/<int:pk>/` (GET, PUT, DELETE)
 - Business List: `http://127.0.0.1:8000/api/businesses/` (GET, POST)
 - Business Detail: `http://127.0.0.1:8000/api/business-detail/<int:pk>/` (GET, PUT, DELETE)
 
